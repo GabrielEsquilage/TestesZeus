@@ -1,0 +1,9 @@
+# Dependencies
+/node_modules
+
+# Cypress - Test Execution Videos and Screenshots
+/cypress/videos/
+/cypress/screenshots/
+
+# Cypress environment variables
+cypress.env.json
