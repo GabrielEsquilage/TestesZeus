@@ -231,12 +231,13 @@ describe('Valida LP Pós-Graduação', () => {
         cy.wait(1500)
 
         cy.contains('Button', 'Enviar').scrollIntoView().click()
+        
         cy.contains('button', 'Fechar', { timeout: 60000 }).should('be.visible').and('be.enabled')
         
 
     })
 
-    it('Deve retornar erro no cadastro - teste com mesmos dados de Nome, Email, CPF', () => { 
+    it('Deve retornar erro no cadastro - teste com mesmos dados de Nome, Email, CPF, Curso', () => { 
 
         cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription')
 
@@ -244,7 +245,7 @@ describe('Valida LP Pós-Graduação', () => {
         cy.contains('Nome Completo').scrollIntoView().parent()
             .find('input, textarea').clear().type(sharedName)
 
-        //cy.logToTerminal(`Usando Nome salvo: ${sharedCpf}`)    
+        cy.logToTerminal(`Usando Nome salvo: ${sharedCpf}`)    
         cy.contains('CPF').scrollIntoView().parent()
             .find('input, textarea').clear().type(sharedCpf)
 
