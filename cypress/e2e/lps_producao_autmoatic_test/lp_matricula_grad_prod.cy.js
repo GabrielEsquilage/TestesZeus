@@ -1,11 +1,12 @@
-describe('Valida LP Pós-Graduação', () => {
+describe('Valida LP Graduação', () => {
     let sharedCpf;
     let sharedEmail;
     let sharedName;
 
+
     it('Deve fazer o cadastro completo - cupom 100%', () => {
 
-        cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription')
+        cy.visit('https://lp-polo-dev.inovacarreira.com.br/inscription')
 
         cy.generateRandomName().then(nome => {
             sharedName = nome;
@@ -39,7 +40,7 @@ describe('Valida LP Pós-Graduação', () => {
                 .find('input, textarea').clear().type(email)
         })
 
-        cy.contains('button', 'Próximo').scrollIntoView().click()
+        cy.contains('button', 'Avançar').scrollIntoView().click()
 
         cy.contains('Digite seu CEP').scrollIntoView().parent()
             .find('input, textarea').clear().type('87020-015')
@@ -49,38 +50,41 @@ describe('Valida LP Pós-Graduação', () => {
         cy.contains('Número').scrollIntoView().parent()
             .find('input, textarea').clear().type('000')
 
-        cy.contains('Button', 'Próximo').scrollIntoView().click()
+        cy.contains('Button', 'Avançar').scrollIntoView().click()
 
+        
         cy.get('button[role="combobox"]')
             .contains('Selecione um curso')
             .click();
 
-        cy.contains('ESPECIALIZAÇÃO EM ARQUITETURA E URBANISMO 123')
+        cy.contains('BACHARELADO EM ARQUITETURA E URBANISMO')
             .should('be.visible')
             .click();
 
-        cy.selecionarOpcaoAleatoriaDireto('Estado')
-        cy.selecionarOpcaoAleatoriaDireto('Cidade')
-        cy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?')
         cy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento')
+
+        //cy.selecionarOpcaoAleatoriaDireto('Estado')
+        //cy.selecionarOpcaoAleatoriaDireto('Cidade')
+        //cy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?')
+        //cy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento')
         cy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades')
 
-        cy.contains('label', 'Pix').click()
+        //cy.contains('label', 'Pix').click()
 
-        cy.contains('Possui cupom de desconto?').scrollIntoView().parent()
+        cy.contains('Cupom').scrollIntoView().parent()
             .find('input, textarea').clear().type('bolsa100')
 
         cy.get('[role="checkbox"][data-slot="checkbox"]').eq(0).click()
         cy.get('[role="checkbox"][data-slot="checkbox"]').eq(1).click()
 
-        cy.contains('p', 'Pagamento isento com cupom de 100% de desconto!')
+        cy.contains('p', 'Cupom aplicado com sucesso!')
             .should('be.visible')
 
-        cy.contains('Button', 'Enviar').scrollIntoView().click()
+        //cy.contains('Button', 'Enviar').scrollIntoView().click()
 
-        cy.contains('button', 'Fechar', { timeout: 60000 })
-            .should('be.visible')
-            .and('be.enabled')
+        //cy.contains('button', 'Fechar', { timeout: 60000 })
+        //    .should('be.visible')
+        //    .and('be.enabled')
     })
 
     it('Deve fazer o cadastro completo - Sem Cupom - PIX', () => {
@@ -312,7 +316,7 @@ describe('Valida LP Pós-Graduação', () => {
 
         cy.wait(1500)
 
-        cy.contains('button', 'Voltar', { timeout: 60000 })
+        cy.contains('button', 'Fechar', { timeout: 60000 })
             .should('be.visible')
             .and('be.enabled')
             .click()

@@ -1,9 +1,17 @@
 {
   "dependencies": {
-    "cypress": "^15.5.0"
+    "cypress": "^15.5.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2"
   },
   "scripts": {
     "test": "cypress run",
-    "test:spec": "cypress run --spec"
+    "test:spec": "cypress run --spec",
+    "cy:run": "cypress run",
+    "test:prod": "yarn cy:run --env-file production.env.json",
+    "report:clean": "rm -rf cypress/results final-report",
+    "report:make": "npx mochawesome-merge cypress/results/*.json > report.json && npx marg report.json --reportDir ./final-report --reportFilename index.html",
+    "routine:prod": "yarn report:clean && yarn test:prod || yarn report:make && yarn report:make"
   }
 }
