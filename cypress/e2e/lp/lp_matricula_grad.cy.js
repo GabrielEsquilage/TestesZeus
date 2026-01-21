@@ -1,4 +1,4 @@
-describe('Valida LP Graduação', () => {
+describe('[STAGING] Valida LP Graduação', () => {
     let sharedCpf;
     let sharedEmail;
     let sharedName;

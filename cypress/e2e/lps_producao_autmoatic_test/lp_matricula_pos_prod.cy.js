@@ -1,4 +1,4 @@
-describe('Valida LP Pós-Graduação', () => {
+describe('[PROD] Valida LP Pós-Graduação', () => {
     let sharedCpf;
     let sharedEmail;
     let sharedName;
