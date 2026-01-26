@@ -29,6 +29,8 @@ jobs:
         run: yarn install
 
       - name: Run Production Tests
+        env:
+          TERM: xterm
         run: yarn cypress run --spec "cypress/e2e/lps_producao_autmoatic_test/**/*.cy.js"
 
       - name: Generate Report
@@ -73,6 +75,8 @@ jobs:
         run: yarn install
 
       - name: Run Staging Tests
+        env:
+          TERM: xterm
         run: yarn cypress run --spec "cypress/e2e/lp/**/*.cy.js"
 
       - name: Generate Report
