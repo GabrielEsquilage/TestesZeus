@@ -8,10 +8,9 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 9 * * *' # 09:00 AM BRT
-    - cron: '0 15 * * *' # 03:00 PM BRT
-    - cron: '50 23 * * *' # 11:50 PM BRT
-    timezone: 'America/Sao_Paulo'
+    - cron: '0 12 * * *' # 09:00 AM BRT is 12:00 PM UTC
+    - cron: '0 18 * * *' # 03:00 PM BRT is 18:00 PM UTC
+    - cron: '50 2 * * *'  # 11:50 PM BRT is 02:50 AM UTC
 
 jobs:
   production-tests:
