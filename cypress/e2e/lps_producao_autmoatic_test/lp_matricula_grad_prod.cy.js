@@ -224,6 +224,21 @@ describe('[PROD] Valida LP Graduação', () => {
         cy.wait(500);
     })
 
-    
+    it('Deve retornar erro ao passar step 1 para 2, sem preenchimento', () => {
+
+        cy.visit('https://matricula.fatecie.edu.br/inscription?polo=0qmJik8RAKkf+vXSL32eRg==')
+
+        cy.contains('button', 'Próximo').scrollIntoView().click()
+
+        cy.get('span.text-red-500')
+            .then($spans => {
+                const textos = [...$spans].map(s => s.innerText.trim())
+                expect(textos).to.include.members([
+                    'Campo Obrigatório',
+                    'E-mail inválido',
+                    'Por Favor, selecione uma data'
+                ])
+            })
+    })
 
 })
