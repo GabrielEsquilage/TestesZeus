@@ -228,7 +228,7 @@ describe('[PROD] Valida LP Graduação', () => {
 
         cy.visit('https://matricula.fatecie.edu.br/inscription?polo=0qmJik8RAKkf+vXSL32eRg==')
 
-        cy.contains('button', 'Próximo').scrollIntoView().click()
+        cy.contains('button', 'Avançar').scrollIntoView().click()
 
         cy.get('span.text-red-500')
             .then($spans => {
