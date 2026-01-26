@@ -131,6 +131,32 @@ Cypress.Commands.add('selecionarOpcaoAleatoriaDireto', (labelTexto) => {
   cy.wait(500)
 })
 
+Cypress.Commands.add('selecionarOpcaoAleatoriaDiretoOption', (labelTexto) => {
+  cy.log(`Selecionando opção (método direto) em: ${labelTexto}`)
+  
+  cy.contains(labelTexto)
+    .scrollIntoView()
+    .parent()
+    .find('div, input, button, [role="option"]')
+    .first()
+    .click({ force: true })
+  
+  cy.wait(1000)
+  
+  cy.get('[role="dialog"]:visible')
+    .find('div.cursor-pointer')
+    .should('have.length.greaterThan', 0)
+    .then($options => {
+      const randomIndex = Math.floor(Math.random() * $options.length)
+      const selectedText = $options.eq(randomIndex).text().trim()
+      
+      cy.log(`Selecionando: "${selectedText}"`) 
+      cy.wrap($options.eq(randomIndex)).click({ force: true })
+    })
+  
+  cy.wait(500)
+})
+
 Cypress.Commands.add('logToTerminal', (message) => {
   cy.task('log', message)
 })
