@@ -65,7 +65,7 @@ jobs:
 
 
   staging-tests:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
