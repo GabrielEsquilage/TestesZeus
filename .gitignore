@@ -4,6 +4,7 @@
 # Cypress - Test Execution Videos and Screenshots
 /cypress/videos/
 /cypress/screenshots/
+/cypress/results
 
 # Cypress environment variables
 cypress.env.json
