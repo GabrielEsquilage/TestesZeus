@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-02T20:03:48.026Z",
+    "end": "2026-02-02T20:05:01.920Z",
+    "duration": 73894,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b05ed5ca-9c25-4f6f-a6a8-0c08ca1e6fc0",
+      "title": "",
+      "fullFile": "cypress/e2e/lps_producao_autmoatic_test/lp_matricula_pos_prod.cy.js",
+      "file": "cypress/e2e/lps_producao_autmoatic_test/lp_matricula_pos_prod.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "eb11eaa9-f9f4-4bfe-8222-0e424296e6dd",
+          "title": "[PROD] Valida LP Pós-Graduação",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer o cadastro completo - Sem Cupom - PIX",
+              "fullTitle": "[PROD] Valida LP Pós-Graduação Deve fazer o cadastro completo - Sem Cupom - PIX",
+              "timedOut": null,
+              "duration": 18093,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.fatecie.edu.br/inscription');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ALFABETIZAÇÃO E LETRAMENTO').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Pix').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('div', 'Informações de Pagamento');\ncy.get('img[alt=\"Imagem do meio de pagamento\"]').should('have.attr', 'src').and('include', 'payment_method=pix');",
+              "err": {},
+              "uuid": "308fa848-d475-4e46-9325-7df4f08b860a",
+              "parentUUID": "eb11eaa9-f9f4-4bfe-8222-0e424296e6dd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve fazer o cadastro completo - Sem Cupom - BOLETO",
+              "fullTitle": "[PROD] Valida LP Pós-Graduação Deve fazer o cadastro completo - Sem Cupom - BOLETO",
+              "timedOut": null,
+              "duration": 17514,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.fatecie.edu.br/inscription');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ALFABETIZAÇÃO E LETRAMENTO').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Boleto').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('div', 'Informações de Pagamento');\ncy.contains('div', 'Código do Boleto');",
+              "err": {},
+              "uuid": "74dabec1-386a-47f1-afa8-7e5c0dca43dd",
+              "parentUUID": "eb11eaa9-f9f4-4bfe-8222-0e424296e6dd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve fazer o cadastro completo - Sem Cupom - cartão de crédito - Deve Retornar Erro no Pagamento com Cartão de Teste",
+              "fullTitle": "[PROD] Valida LP Pós-Graduação Deve fazer o cadastro completo - Sem Cupom - cartão de crédito - Deve Retornar Erro no Pagamento com Cartão de Teste",
+              "timedOut": null,
+              "duration": 18551,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.fatecie.edu.br/inscription');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ALFABETIZAÇÃO E LETRAMENTO').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Cartão de Crédito').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('Número do cartão').scrollIntoView().parent().find('input').clear().type('4000000000000010');\ncy.contains('Nome que está no cartão').scrollIntoView().parent().find('input').clear().type('TESTE TESTE');\ncy.contains('Mês de Vencimento ').scrollIntoView().parent().find('input').clear().type('10');\ncy.contains('Ano de Vencimento').scrollIntoView().parent().find('input').clear().type('2029');\ncy.contains('CVV').scrollIntoView().parent().find('input').clear().type('129');\ncy.wait(1500);\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('button', 'Voltar', {\n  timeout: 60000\n}).should('be.visible').and('be.enabled').click();",
+              "err": {},
+              "uuid": "15a1ac73-a082-4972-8fac-6fc259a422ed",
+              "parentUUID": "eb11eaa9-f9f4-4bfe-8222-0e424296e6dd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar erro ao passar step 1 para 2, sem preenchimento",
+              "fullTitle": "[PROD] Valida LP Pós-Graduação Deve retornar erro ao passar step 1 para 2, sem preenchimento",
+              "timedOut": null,
+              "duration": 602,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.fatecie.edu.br/inscription');\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.get('span.text-red-500').then($spans => {\n  const textos = [...$spans].map(s => s.innerText.trim());\n  expect(textos).to.include.members(['Campo Obrigatório', 'E-mail inválido', 'Por Favor, selecione uma data']);\n});",
+              "err": {},
+              "uuid": "f0b3a7ba-3a3d-4770-9ba2-1d99ec8d8428",
+              "parentUUID": "eb11eaa9-f9f4-4bfe-8222-0e424296e6dd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "308fa848-d475-4e46-9325-7df4f08b860a",
+            "74dabec1-386a-47f1-afa8-7e5c0dca43dd",
+            "15a1ac73-a082-4972-8fac-6fc259a422ed",
+            "f0b3a7ba-3a3d-4770-9ba2-1d99ec8d8428"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 54760,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

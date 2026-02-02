@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-02T20:05:04.187Z",
+    "end": "2026-02-02T20:05:56.176Z",
+    "duration": 51989,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "258f3f0a-b30a-4a18-a07a-70ff42e666ed",
+      "title": "",
+      "fullFile": "cypress/e2e/ERP/prod/cadastroPessoa.cy.js",
+      "file": "cypress/e2e/ERP/prod/cadastroPessoa.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d656cd3c-c7ad-416b-a04c-93af9fbeb3db",
+          "title": "Cadastro de Pessoa",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer o cadastro completo",
+              "fullTitle": "Cadastro de Pessoa Deve fazer o cadastro completo",
+              "timedOut": null,
+              "duration": 13169,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginprod('admin', '7Y/6p0p\\\\iYd{');\ncy.wait(2500);\ncy.visit('https://erp.fatecie.edu.br/v2/controle-de-acesso/pessoas/criacao');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateRandomName().then(social => {\n  sharedNameSocial = social;\n  cy.logToTerminal(`Nome gerado e salvo: ${social}`);\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(social);\n});\ncy.contains('span', 'Selecione a raça...').click();\ncy.contains('div', 'Parda').click();\ncy.contains('span', 'Selecione o gênero...').click();\ncy.contains('div', 'Masculino').click();\ncy.contains('Data de Nascimento').scrollIntoView().parent().find('input').clear().type('01/01/2000{enter}');\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.get('input[name=\"documentos.0.numero\"]').scrollIntoView().clear().type(cpf);\n});\ncy.contains('button', 'Avançar').click();\n//step2\ncy.contains('CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.contains('Número').scrollIntoView().parent().click().find('input, textarea').clear().type('855');\ncy.wait(1000);\ncy.contains('button', 'Avançar').scrollIntoView().click();\ncy.wait(1000);\ncy.contains('span', 'E-mail de Usuário');\ncy.contains('span', 'Telefone');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.get('input[name=\"contatos.0.valor\"]').type(email);\n});\ncy.get('[name=\"contatos.1.valor\"]').type('(44)991366353');\ncy.contains('button', 'Avançar').click();\n//step valitaton\ncy.then(() => {\n  cy.contains('p', 'Nome Completo').parent().find('.truncate').should('have.text', sharedName);\n  cy.logToTerminal(`Nome validado com sucesso!: ${sharedName}`);\n  cy.contains('p', 'Nome Social').parent().find('.truncate').should('have.text', sharedNameSocial);\n  cy.logToTerminal(`Nome Social Validado com Sucesso!: ${sharedNameSocial}`);\n  cy.contains('p', 'CPF').parent().find('div, span').should('contain', sharedCpf);\n  cy.logToTerminal(`CPF Validado com Sucesso!: ${sharedCpf}`);\n  cy.contains('p', 'Email_usuario').parent().find('button').should('have.text', sharedEmail);\n  cy.logToTerminal(`E-mail Validado com Sucesso!: ${sharedEmail}`);\n});\ncy.contains('button', 'Concluir').click();",
+              "err": {},
+              "uuid": "96b889be-7877-4efc-b949-67bc77b14785",
+              "parentUUID": "d656cd3c-c7ad-416b-a04c-93af9fbeb3db",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve editar e cancelar a edição",
+              "fullTitle": "Cadastro de Pessoa Deve editar e cancelar a edição",
+              "timedOut": null,
+              "duration": 12869,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginprod('admin', '7Y/6p0p\\\\iYd{');\ncy.wait(2500);\ncy.visit('https://erp.fatecie.edu.br/v2/controle-de-acesso/pessoas/listagem');\ncy.then(() => {\n  cy.get('input[placeholder=\"Pesquisar...\"]').scrollIntoView().clear().type(sharedName);\n});\ncy.wait(1500);\ncy.contains('div', sharedName).click();\ncy.contains('button', 'Editar Dados').click();\ncy.wait(1500);\ncy.generateRandomName().then(social => {\n  sharedNameSocial = social;\n  cy.logToTerminal(`Nome gerado e salvo: ${social}`);\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(social);\n});\ncy.contains('button', 'Avançar').click();\ncy.contains('button', 'Avançar').click();\ncy.contains('button', 'Avançar').click();\ncy.contains('button', 'Cancelar operação').click();\ncy.wait(1000);\ncy.contains('button', 'Descartar dados').click();",
+              "err": {},
+              "uuid": "928a92b1-fb78-4ba0-a80a-859653d32ef2",
+              "parentUUID": "d656cd3c-c7ad-416b-a04c-93af9fbeb3db",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve editar e concluir a edição",
+              "fullTitle": "Cadastro de Pessoa Deve editar e concluir a edição",
+              "timedOut": null,
+              "duration": 10255,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginprod('admin', '7Y/6p0p\\\\iYd{');\ncy.wait(2500);\ncy.visit('https://erp.fatecie.edu.br/v2/controle-de-acesso/pessoas/listagem');\ncy.then(() => {\n  cy.get('input[placeholder=\"Pesquisar...\"]').scrollIntoView().clear().type(sharedName);\n});\ncy.wait(1500);\ncy.contains('div', sharedName).click();\ncy.contains('button', 'Editar Dados').click();\ncy.wait(1500);\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.get('input[name=\"documentos.0.numero\"]').scrollIntoView().clear().type(cpf);\n});\ncy.contains('button', 'Avançar').click();\ncy.contains('button', 'Avançar').click();\ncy.contains('button', 'Avançar').click();\ncy.contains('button', 'Concluir').click();",
+              "err": {},
+              "uuid": "9f8ddc0d-2523-428c-a870-d4d00c449cf1",
+              "parentUUID": "d656cd3c-c7ad-416b-a04c-93af9fbeb3db",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve excluir e concluir a edição",
+              "fullTitle": "Cadastro de Pessoa Deve excluir e concluir a edição",
+              "timedOut": null,
+              "duration": 13465,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginprod('admin', '7Y/6p0p\\\\iYd{');\ncy.wait(2500);\ncy.visit('https://erp.fatecie.edu.br/v2/controle-de-acesso/pessoas/listagem');\ncy.then(() => {\n  cy.get('input[placeholder=\"Pesquisar...\"]').scrollIntoView().clear().type(sharedName);\n});\ncy.contains('div', sharedName).click({\n  force: true\n});\ncy.contains('button', 'Excluir Dados').click({\n  force: true\n});\ncy.get('div.flex-col-reverse').find('button').contains('Excluir').click({\n  force: true\n});\ncy.wait(5000);\ncy.visit('https://erp.fatecie.edu.br/v2/controle-de-acesso/pessoas/listagem');\ncy.then(() => {\n  cy.get('input[placeholder=\"Pesquisar...\"]').scrollIntoView().clear().type(sharedName);\n});",
+              "err": {},
+              "uuid": "69093f5b-db6a-48cd-ade7-3396d5b759e3",
+              "parentUUID": "d656cd3c-c7ad-416b-a04c-93af9fbeb3db",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "96b889be-7877-4efc-b949-67bc77b14785",
+            "928a92b1-fb78-4ba0-a80a-859653d32ef2",
+            "9f8ddc0d-2523-428c-a870-d4d00c449cf1",
+            "69093f5b-db6a-48cd-ade7-3396d5b759e3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 49758,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -5,13 +5,13 @@
     "mochawesome-report-generator": "^6.3.2"
   },
   "scripts": {
-    "test": "cypress run",
+    "test": "yarn report:clean && cypress run; yarn report:make",
     "test:spec": "cypress run --spec",
     "cy:run": "cypress run",
     "test:prod": "yarn cy:run --env-file production.env.json",
     "report:clean": "rm -rf cypress/results final-report",
     "report:make": "./node_modules/.bin/mochawesome-merge cypress/results/*.json > report.json && ./node_modules/.bin/marge report.json --reportDir ./final-report --reportFilename index.html",
-    "routine:prod": "yarn report:clean && yarn test:prod || yarn report:make && yarn report:make"
+    "routine:prod": "yarn report:clean && yarn test:prod; yarn report:make"
   },
   "devDependencies": {
  

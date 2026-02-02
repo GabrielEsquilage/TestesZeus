@@ -1,0 +1,198 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 1,
+    "pending": 0,
+    "failures": 4,
+    "start": "2026-02-02T20:00:06.650Z",
+    "end": "2026-02-02T20:03:08.026Z",
+    "duration": 181376,
+    "testsRegistered": 5,
+    "passPercent": 20,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "203aecea-eb4f-4136-8d58-bc1fe6bb9bda",
+      "title": "",
+      "fullFile": "cypress/e2e/lp/lp_matricula_pos.cy.js",
+      "file": "cypress/e2e/lp/lp_matricula_pos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e782d85e-0c1f-4435-b03c-e9a0f786b6f7",
+          "title": "[STAGING] Valida LP Pós-Graduação",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer o cadastro completo - cupom 100%",
+              "fullTitle": "[STAGING] Valida LP Pós-Graduação Deve fazer o cadastro completo - cupom 100%",
+              "timedOut": null,
+              "duration": 14888,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ARQUITETURA E URBANISMO 123').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Pix').click();\ncy.contains('Possui cupom de desconto?').scrollIntoView().parent().find('input, textarea').clear().type('bolsa100');\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('p', 'Pagamento isento com cupom de 100% de desconto!').should('be.visible');\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('button', 'Fechar', {\n  timeout: 60000\n}).should('be.visible').and('be.enabled');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.\n    at Context.eval (webpack:///./cypress/e2e/lp/lp_matricula_pos.cy.js:44:11)",
+                "diff": null
+              },
+              "uuid": "7685500d-bf1b-4eec-baab-1d33e9d421f0",
+              "parentUUID": "e782d85e-0c1f-4435-b03c-e9a0f786b6f7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve fazer o cadastro completo - Sem Cupom - PIX",
+              "fullTitle": "[STAGING] Valida LP Pós-Graduação Deve fazer o cadastro completo - Sem Cupom - PIX",
+              "timedOut": null,
+              "duration": 15510,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ARQUITETURA E URBANISMO 123').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Pix').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('button', 'Fechar', {\n  timeout: 60000\n}).should('be.visible').and('be.enabled');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.\n    at Context.eval (webpack:///./cypress/e2e/lp/lp_matricula_pos.cy.js:124:11)",
+                "diff": null
+              },
+              "uuid": "0fc8c9eb-3b56-4f77-8d52-19f7beb7b4a8",
+              "parentUUID": "e782d85e-0c1f-4435-b03c-e9a0f786b6f7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve fazer o cadastro completo - Sem Cupom - cartão de crédito",
+              "fullTitle": "[STAGING] Valida LP Pós-Graduação Deve fazer o cadastro completo - Sem Cupom - cartão de crédito",
+              "timedOut": null,
+              "duration": 15415,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ARQUITETURA E URBANISMO 123').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Cartão de Crédito').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('Número do cartão').scrollIntoView().parent().find('input').clear().type('4000000000000010');\ncy.contains('Nome que está no cartão').scrollIntoView().parent().find('input').clear().type('TESTE TESTE');\ncy.contains('Mês de Vencimento ').scrollIntoView().parent().find('input').clear().type('10');\ncy.contains('Ano de Vencimento').scrollIntoView().parent().find('input').clear().type('2029');\ncy.contains('CVV').scrollIntoView().parent().find('input').clear().type('129');\ncy.wait(1500);\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('button', 'Fechar', {\n  timeout: 60000\n}).should('be.visible').and('be.enabled');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.\n    at Context.eval (webpack:///./cypress/e2e/lp/lp_matricula_pos.cy.js:198:11)",
+                "diff": null
+              },
+              "uuid": "69410097-c68a-45f7-a6cd-079d3dda7e31",
+              "parentUUID": "e782d85e-0c1f-4435-b03c-e9a0f786b6f7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar erro no cadastro - teste com mesmos dados de Nome, Email, CPF, Curso",
+              "fullTitle": "[STAGING] Valida LP Pós-Graduação Deve retornar erro no cadastro - teste com mesmos dados de Nome, Email, CPF, Curso",
+              "timedOut": null,
+              "duration": 16724,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription');\ncy.logToTerminal(`Usando Nome salvo: ${sharedName}`);\ncy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(sharedName);\ncy.logToTerminal(`Usando Nome salvo: ${sharedCpf}`);\ncy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(sharedCpf);\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.logToTerminal(`Usando Email salvo: ${sharedEmail}`);\ncy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(sharedEmail);\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87080-400');\ncy.wait(6000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Próximo').scrollIntoView().click();\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('ESPECIALIZAÇÃO EM ARQUITETURA E URBANISMO 123').should('be.visible').click();\ncy.selecionarOpcaoAleatoriaDireto('Estado');\ncy.selecionarOpcaoAleatoriaDireto('Cidade');\ncy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?');\ncy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento');\ncy.selecionarOpcaoAleatoriaDireto('Dia de vencimento das mensalidades');\ncy.contains('label', 'Pix').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.wait(6000);\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.wait(1500);\ncy.contains('button', 'Voltar', {\n  timeout: 60000\n}).should('be.visible').and('be.enabled').click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Digite seu CEP' but never did.\n    at Context.eval (webpack:///./cypress/e2e/lp/lp_matricula_pos.cy.js:280:11)",
+                "diff": null
+              },
+              "uuid": "4421741c-152b-487b-bf0b-ea8283bab426",
+              "parentUUID": "e782d85e-0c1f-4435-b03c-e9a0f786b6f7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar erro ao passar step 1 para 2, sem preenchimento",
+              "fullTitle": "[STAGING] Valida LP Pós-Graduação Deve retornar erro ao passar step 1 para 2, sem preenchimento",
+              "timedOut": null,
+              "duration": 856,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matriculapos.dev.fatecie.edu.br/inscription');\ncy.contains('button', 'Próximo').scrollIntoView().click();\ncy.get('span.text-red-500').then($spans => {\n  const textos = [...$spans].map(s => s.innerText.trim());\n  expect(textos).to.include.members(['Campo Obrigatório', 'E-mail inválido', 'Por Favor, selecione uma data']);\n});",
+              "err": {},
+              "uuid": "f0d2b223-6b56-4cf0-92bd-50868004e55e",
+              "parentUUID": "e782d85e-0c1f-4435-b03c-e9a0f786b6f7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f0d2b223-6b56-4cf0-92bd-50868004e55e"
+          ],
+          "failures": [
+            "7685500d-bf1b-4eec-baab-1d33e9d421f0",
+            "0fc8c9eb-3b56-4f77-8d52-19f7beb7b4a8",
+            "69410097-c68a-45f7-a6cd-079d3dda7e31",
+            "4421741c-152b-487b-bf0b-ea8283bab426"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 63393,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

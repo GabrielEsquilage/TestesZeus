@@ -1,4 +1,4 @@
-describe('Cadastro de Pessoa', () => {
+describe('[PROD] Cadastro de Pessoa', () => {
 
     let sharedName;
     let sharedNameSocial;

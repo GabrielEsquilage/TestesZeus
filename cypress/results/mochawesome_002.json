@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-02T20:03:10.313Z",
+    "end": "2026-02-02T20:03:45.350Z",
+    "duration": 35037,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a23c0add-76c3-431d-9901-edfd573daba9",
+      "title": "",
+      "fullFile": "cypress/e2e/lps_producao_autmoatic_test/lp_matricula_grad_prod.cy.js",
+      "file": "cypress/e2e/lps_producao_autmoatic_test/lp_matricula_grad_prod.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "89bd893f-ca81-4aa5-9a22-3174032f5456",
+          "title": "[PROD] Valida LP Graduação",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer o cadastro completo - method_payment = PIX",
+              "fullTitle": "[PROD] Valida LP Graduação Deve fazer o cadastro completo - method_payment = PIX",
+              "timedOut": null,
+              "duration": 15814,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matricula.fatecie.edu.br/inscription?polo=0qmJik8RAKkf+vXSL32eRg==');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Avançar').scrollIntoView().click();\n//---------------------------------------------------------------------------        \ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Avançar').scrollIntoView().click();\n//--------------------------------------------------------------\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('BACHARELADO EM ARQUITETURA E URBANISMO').should('be.visible').click();\ncy.selecionarOpcaoAleatoria('Planos de Pagamento');\n//cy.selecionarOpcaoAleatoriaDireto('Estado')\n//cy.selecionarOpcaoAleatoriaDireto('Cidade')\n//cy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?')\n//cy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento')\ncy.selecionarOpcaoAleatoria('Dia de vencimento das mensalidades');\n//cy.selecionarOpcaoAleatoriaDiretoOption('Polo presencial')\ncy.contains('button', 'Selecione um polo presencial').click();\ncy.contains('div', 'MARINGÁ (MEGA POLO) - PR').click();\n//cy.contains('Cupom').scrollIntoView().parent()\n//    .find('input, textarea').clear().type('bolsa100')\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('label', 'Pix').click();\n//cy.contains('p', 'Cupom aplicado com sucesso!')\n//   .should('be.visible')\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('div', 'Informações de Pagamento');\ncy.get('img[alt=\"Imagem do meio de pagamento\"]').should('have.attr', 'src').and('include', 'payment_method=pix');\n//cy.contains('button', 'Fechar', { timeout: 60000 })\n//    .should('be.visible')\n//    .and('be.enabled')\ncy.scrollTo('top');\ncy.wait(500);",
+              "err": {},
+              "uuid": "d59dd3d9-22bf-48d6-aff8-a06cf16ab925",
+              "parentUUID": "89bd893f-ca81-4aa5-9a22-3174032f5456",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve fazer o cadastro completo - method_payment = credit card | Deve retornar erro com cartão de teste",
+              "fullTitle": "[PROD] Valida LP Graduação Deve fazer o cadastro completo - method_payment = credit card | Deve retornar erro com cartão de teste",
+              "timedOut": null,
+              "duration": 16243,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matricula.fatecie.edu.br/inscription?polo=0qmJik8RAKkf+vXSL32eRg==');\ncy.generateRandomName().then(nome => {\n  sharedName = nome;\n  cy.logToTerminal(`Nome gerado e salvo: ${nome}`);\n  cy.contains('Nome Completo').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.generateValidCpf().then(cpf => {\n  sharedCpf = cpf;\n  cy.logToTerminal(`CPF gerado e salvo: ${cpf}`);\n  cy.contains('CPF').scrollIntoView().parent().find('input, textarea').clear().type(cpf);\n});\ncy.contains('Telefone').scrollIntoView().parent().find('input, textarea').clear().type('44444444444');\ncy.generateRandomName().then(nome => {\n  cy.contains('Nome Social').scrollIntoView().parent().find('input, textarea').clear().type(nome);\n});\ncy.contains('Data de Nascimento ').scrollIntoView().parent().find('input').clear().type('2000-01-01');\ncy.generateEmail().then(email => {\n  sharedEmail = email;\n  cy.logToTerminal(`Email gerado e salvo: ${email}`);\n  cy.contains('E-mail').scrollIntoView().parent().find('input, textarea').clear().type(email);\n});\ncy.contains('button', 'Avançar').scrollIntoView().click();\n//---------------------------------------------------------------------------        \ncy.contains('Digite seu CEP').scrollIntoView().parent().find('input, textarea').clear().type('87020-015');\ncy.wait(1000);\ncy.contains('Número').scrollIntoView().parent().find('input, textarea').clear().type('000');\ncy.contains('Button', 'Avançar').scrollIntoView().click();\n//--------------------------------------------------------------\ncy.get('button[role=\"combobox\"]').contains('Selecione um curso').click();\ncy.contains('BACHARELADO EM ARQUITETURA E URBANISMO').should('be.visible').click();\ncy.selecionarOpcaoAleatoria('Planos de Pagamento');\n//cy.selecionarOpcaoAleatoriaDireto('Estado')\n//cy.selecionarOpcaoAleatoriaDireto('Cidade')\n//cy.selecionarOpcaoAleatoriaDireto('Qual polo prefere estudar?')\n//cy.selecionarOpcaoAleatoriaDireto('Planos de Pagamento')\ncy.selecionarOpcaoAleatoria('Dia de vencimento das mensalidades');\n//cy.selecionarOpcaoAleatoriaDiretoOption('Polo presencial')\ncy.contains('button', 'Selecione um polo presencial').click();\ncy.contains('div', 'MARINGÁ (MEGA POLO) - PR').click();\n//cy.contains('Cupom').scrollIntoView().parent()\n//    .find('input, textarea').clear().type('bolsa100')\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('label', 'Cartão de Crédito').click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(0).click();\ncy.get('[role=\"checkbox\"][data-slot=\"checkbox\"]').eq(1).click();\ncy.contains('Número do cartão').scrollIntoView().parent().find('input').clear().type('4000000000000010');\ncy.contains('Nome que está no cartão').scrollIntoView().parent().find('input').clear().type('TESTE TESTE');\ncy.contains('Mês de Vencimento ').scrollIntoView().parent().find('input').clear().type('10');\ncy.contains('Ano de Vencimento').scrollIntoView().parent().find('input').clear().type('2029');\ncy.contains('CVV').scrollIntoView().parent().find('input').clear().type('129');\ncy.wait(1500);\n//cy.contains('p', 'Cupom aplicado com sucesso!')\n//   .should('be.visible')\ncy.contains('Button', 'Enviar').scrollIntoView().click();\ncy.contains('button', 'Voltar', {\n  timeout: 60000\n}).should('be.visible').and('be.enabled').click();\n//cy.contains('button', 'Fechar', { timeout: 60000 })\n//    .should('be.visible')\n//    .and('be.enabled')\ncy.scrollTo('top');\ncy.wait(500);",
+              "err": {},
+              "uuid": "5d4ac7ec-4c87-4f5d-b77e-fe5a60c18306",
+              "parentUUID": "89bd893f-ca81-4aa5-9a22-3174032f5456",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar erro ao passar step 1 para 2, sem preenchimento",
+              "fullTitle": "[PROD] Valida LP Graduação Deve retornar erro ao passar step 1 para 2, sem preenchimento",
+              "timedOut": null,
+              "duration": 391,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://matricula.fatecie.edu.br/inscription?polo=0qmJik8RAKkf+vXSL32eRg==');\ncy.contains('button', 'Avançar').scrollIntoView().click();\ncy.get('span.text-red-500').then($spans => {\n  const textos = [...$spans].map(s => s.innerText.trim());\n  expect(textos).to.include.members(['Campo Obrigatório', 'E-mail inválido', 'Por Favor, selecione uma data']);\n});",
+              "err": {},
+              "uuid": "3c4f2c4e-1597-480e-a2ef-c3889f6dadd2",
+              "parentUUID": "89bd893f-ca81-4aa5-9a22-3174032f5456",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d59dd3d9-22bf-48d6-aff8-a06cf16ab925",
+            "5d4ac7ec-4c87-4f5d-b77e-fe5a60c18306",
+            "3c4f2c4e-1597-480e-a2ef-c3889f6dadd2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 32448,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
