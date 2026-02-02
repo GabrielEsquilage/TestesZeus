@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Production Test
 
 on:
   push:
@@ -47,7 +47,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-combined-reports
+          name: report_production
           path: final-report
           if-no-files-found: error
 
