@@ -6,13 +6,13 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 12 * * *' 
-    - cron: '0 18 * * *' 
-    - cron: '50 2 * * *'
+    - cron: '12 12 * * *' 
+    - cron: '24 18 * * *' 
+    - cron: '52 2 * * *'
   workflow_dispatch:
 
 jobs:
-  production-tests:
+  cypress-execution:
     if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -28,58 +28,12 @@ jobs:
         run: yarn install
 
       - name: Run Production Tests
-        id: run_tests
         env:
           TERM: xterm
         run: yarn cypress run --spec "cypress/e2e/lps_producao_autmoatic_test/**/*.cy.js"
         continue-on-error: true
 
-      - name: Generate Report
-        if: always()
-        run: yarn report:make
-
-      - name: Upload Report Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-report-prod
-          path: final-report
-          if-no-files-found: error
-
-      - name: Upload Screenshots on Failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots-prod
-          path: cypress/screenshots
-          if-no-files-found: ignore
-
-      - name: Upload Videos on Failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-videos-prod
-          path: cypress/videos
-          if-no-files-found: ignore
-
-
-  erp-production-tests:
-    if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: yarn install
-
       - name: Run ERP Production Tests
-        id: run_tests
         env:
           TERM: xterm
         run: yarn cypress run --spec "cypress/e2e/ERP/prod/cadastroPessoa.cy.js"
@@ -93,20 +47,16 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-report-erp-prod
+          name: cypress-combined-reports
           path: final-report
           if-no-files-found: error
 
-      - name: Upload Screenshots on Failure
+      - name: Upload Media on Failure
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots-erp-prod
-          path: cypress/screenshots
+          name: cypress-media-failures
+          path: |
+            cypress/screenshots
+            cypress/videos
           if-no-files-found: ignore
-
-      - name: Upload Videos on Failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-videos
