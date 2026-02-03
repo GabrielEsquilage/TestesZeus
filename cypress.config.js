@@ -35,12 +35,12 @@ module.exports = defineConfig({
         },
       })
     },
-    reporter: 'mochawesome',
+    reporter: process.env.GITHUB_ACTIONS ? 'mochawesome' : 'spec',
     reporterOptions: {
       reportDir: 'cypress/results',
       overwrite: false,
-      html: true,
-      json: true,
+      html: !!process.env.GITHUB_ACTIONS,
+      json: true
     },
   },
   
