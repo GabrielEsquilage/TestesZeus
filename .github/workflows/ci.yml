@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Clean Old Reports
+        run: yarn report:clean
+
       - name: Run Production Tests
         env:
           TERM: xterm
@@ -44,6 +47,7 @@ jobs:
         run: yarn report:make
 
       - name: Upload Report Artifact
+      
         if: always()
         uses: actions/upload-artifact@v4
         with:

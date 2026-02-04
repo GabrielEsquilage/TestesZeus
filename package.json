@@ -9,7 +9,7 @@
     "test:spec": "cypress run --spec",
     "cy:run": "cypress run",
     "test:prod": "yarn cy:run --env-file production.env.json",
-    "report:clean": "rm -rf cypress/results final-report",
+    "report:clean": "rm -rf cypress/results final-report report.json",
     "report:make": "./node_modules/.bin/mochawesome-merge cypress/results/*.json > report_production.json && ./node_modules/.bin/marge report_production.json --reportDir ./final-report --reportFilename report_production.html",
     "routine:prod": "yarn report:clean && yarn test:prod; yarn report:make"
   },
