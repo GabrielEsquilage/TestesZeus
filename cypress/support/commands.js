@@ -168,3 +168,74 @@ Cypress.Commands.add('selecionarOpcaoAleatoriaDiretoOption', (labelTexto) => {
 Cypress.Commands.add('logToTerminal', (message) => {
   cy.task('log', message)
 })
+
+Cypress.Commands.add('preencherFormularioDisciplina', (dados = {}) => {
+  cy.contains('span', 'Selecione a Forma da Disciplina').click()
+  cy.contains('div', dados.forma || 'Eletiva').click()
+
+  cy.contains('span', 'Tipo da Disciplina').click()
+  cy.contains('div', dados.tipo || 'Padrão').click()
+
+  cy.contains('span', 'Série').click()
+  cy.contains('div', dados.serie || 'Série 1').click()
+
+  cy.contains('Total de Créditos').scrollIntoView().parent()
+      .find('input, textarea').clear().type(dados.creditos || '100')
+
+  cy.contains('Nota Mínima para Aprovação (%)').scrollIntoView().parent()
+      .find('input, textarea').clear().type(dados.notaMinima || '7')
+
+  cy.contains('span', 'Tipo da Nota').click()
+  cy.contains('div', dados.tipoNota || 'Média').click()
+
+  cy.contains('Valor da Disciplina').scrollIntoView().parent()
+      .find('input, textarea').clear().type(dados.valor || '5000')
+
+  cy.contains('Observação').scrollIntoView().parent()
+      .find('input, textarea').clear().type(dados.obs || 'TESTE AUTOMATIZADO')
+
+  cy.contains('Falta Diária?').closest('div')
+      .contains('p', dados.faltaDiaria || 'Sim').click()
+
+  cy.contains('Nota?').closest('div')
+      .contains('p', dados.temNota || 'Sim').click()
+  
+  
+  cy.get('body').then(($body) => {
+    const chevron = $body.find('svg.lucide-chevron-right');
+    
+    if (chevron.length > 0 && chevron.closest('button').is(':enabled')) {
+      cy.wrap(chevron).closest('button').click();
+    } else {
+      cy.contains('button', 'Avançar').scrollIntoView().click({ force: true });
+    }
+  });
+})
+
+Cypress.Commands.add('preencherFormularioDisciplinaAlterado', (dados = {}) => {
+  cy.contains('label', 'Forma da Oferta').click()
+  cy.contains('div', dados.forma || 'Eletiva').click()
+
+  cy.contains('Valor da Disciplina').scrollIntoView().parent()
+      .find('input, textarea').clear().type(dados.valor || '5000')
+
+  cy.contains('Observação').scrollIntoView().parent()
+      .find('input, textarea').clear().type(dados.obs || 'TESTE AUTOMATIZADO')
+
+  cy.contains('Falta Diária?').closest('div')
+      .contains('p', dados.faltaDiaria || 'Não').click()
+
+  cy.contains('Nota?').closest('div')
+      .contains('p', dados.temNota || 'Não').click()
+  
+  
+  cy.get('body').then(($body) => {
+    const chevron = $body.find('svg.lucide-chevron-right');
+    
+    if (chevron.length > 0 && chevron.closest('button').is(':enabled')) {
+      cy.wrap(chevron).closest('button').click();
+    } else {
+      cy.contains('button', 'Avançar').scrollIntoView().click({ force: true });
+    }
+  });
+})
